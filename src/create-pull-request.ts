@@ -18,6 +18,7 @@ export interface Inputs {
   author: string
   signoff: boolean
   branch: string
+  branchSource: string
   deleteBranch: boolean
   branchSuffix: string
   base: string
@@ -171,7 +172,7 @@ export async function createPullRequest(inputs: Inputs): Promise<void> {
     const result = await createOrUpdateBranch(
       git,
       inputs.commitMessage,
-      inputs.base,
+      inputs.branchSource,
       inputs.branch,
       branchRemoteName,
       inputs.signoff,
